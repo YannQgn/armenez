@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Ar Menez Elagage</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	<link rel="stylesheet" href="css/custom.min.css" />
+	<link rel="shortcut icon" href="img/favicon.png" />
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.fa-bars').click(function () {
+				$('.inactiv').toggle("slide");
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="navbarsite">
+		<ul class="ulnav">
+			<img class="logo" src="logo.png">
+			<i class="fa fa-bars fa-2x"></i>
+			<li class="inactiv"><a href="index.html">Accueil</a></li>
+			<li class="inactiv"><a href="realisations.html">R&eacutealisations</a></li>
+			<li class="inactiv"><a href="presse.html">Presse</a></li>
+			<li class="inactiv"><a href="conseils.html">Conseils</a></li>
+			<li class="active"><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
+
+	<div class="intro">
+		<div class="container">
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="container">
+			<div class="post" style="margin-bottom: 10px;">
+				<a href="javascript:void(0)">
+					<h1>Contact</h1>
+				</a>
+				<div class="in-content" id="contacthref">
+					<p>
+						Nous intervenons sur le secteur de Ploun&eacutev&eacutezel et ses alentours.
+					</p>
+					<p>
+						Pour une prise de rendez-vous, une demande de devis ou un diagnostic, du lundi au vendredi entre
+						deux grimpettes.
+					</p>
+					</p>
+					<p id="adresseMail">
+						Pour toute demande de renseignements, par courriel :
+						<span class="red"><a class="red"
+								href="mailto:pierre-luc.lemaire@orange.fr">pierre-luc.lemaire@orange.fr</a></span>
+					</p>
+					<p>
+						<span itemprop="telephone"><a id="numTel" href="tel:+0768981684">07.68.98.16.84</a></span>
+					</p>
+					<div>
+						<div class="spanitemprop">
+							<span>AR MENEZ ELAGAGE</span>
+							</br>
+							<span itemprop="adresse">Coatilouarn</span>
+							<span itemprop="codepostal">29270 </span>
+							<span itemprop="ville">PLOUNEVEZEL</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="mapid"></div>
+
+
+	<div class="containerbtn">
+		<a href="https://www.google.com/maps/dir//48.2860839,-3.5996624/@48.2900316,-3.6061817,14.5z/data=!4m2!4m1!3e0"
+			target="_blank">
+			<button class="buttonmap button--secondary">
+				Itinéraire
+			</button>
+		</a>
+	</div>
+
+	<footer>
+
+		<p class="text-centered foot-cp">
+			<a>@ AR MENEZ ELAGAGE 2021- SIRET N&deg; 8281-9630-300014 - </a>
+			<a href="mentions.html" class="lmentions"> MENTIONS </a>
+			<a>-</a>
+			<a href="plan.html" class="lplan"> PLAN DU SITE</a>
+			<a>-</a>
+			<a href="phplogin/loginform.html"><i class="fas fa-user-circle"></i></a>
+		</p>
+		</div>
+	</footer>
+
+
+	<script type="text/javascript">
+		let mymap = L.map("mapid").setView([48.285933993343335, -3.5996624048969497], 8);
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+
+			maxZoom: 18,
+			id: 'mapbox/streets-v11',
+			tileSize: 512,
+			zoomOffset: -1,
+			accessToken: 'pk.eyJ1IjoieWFubnFnbiIsImEiOiJja2txeTMyMzEwcjZ5MnZwODhid2V0aDl4In0.WfKxtBcx7QlQjNEyw2n6LQ'
+		}).addTo(mymap);
+
+		var ARMENEZ = L.icon({
+			iconUrl: "./img/favicon.png",
+			iconSize: [38, 38],
+			popupAnchor: [-3, -76],
+			shadowSize: [68, 95],
+			shadowAnchor: [22, 94]
+		});
+
+		var popup = L.popup()
+			.setLatLng([48.285919715114055, -3.599635582807817])
+			.setContent("Nous sommes ici !")
+			.openOn(mymap);
+
+		L.marker([48.285919715114055, -3.599635582807817], { icon: ARMENEZ }).addTo(mymap);
+
+	</script>
+</body>
+
+</html>
